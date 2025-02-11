@@ -27,7 +27,7 @@ export default function HeadComponent() {
       <meta property="og:image:type" content="image/jpeg" />
       <meta property="og:image:secure_url" content={personalData.siteURL} />
       <link rel="canonical" href={personalData.siteURL} />
-      <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2" />
+      <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     </Head>
   );
 }
