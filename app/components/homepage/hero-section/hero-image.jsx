@@ -48,7 +48,7 @@ const HeroImage = () => (
         }
       }
   
-      @media(prefers-reduced-motion: no-preference) {
+      
         .cog {
           animation: spin 20000ms linear 0s infinite;
           transform-origin: 53.8% 85.69%;
@@ -61,8 +61,6 @@ const HeroImage = () => (
         .switchToggle2 {
           animation: translate2 3000ms ease-in 0s infinite;
         }
-
-      }
    `}
     </style>
     <g id="Frame_595">
