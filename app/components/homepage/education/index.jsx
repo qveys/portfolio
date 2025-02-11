@@ -1,4 +1,6 @@
-'use client';
+// @flow strict
+
+"use client";
 
 import { useRef, useEffect, useState } from "react";
 import { gsap, Linear } from "gsap";
@@ -7,77 +9,39 @@ import { educations } from "@/utils/data/educations";
 import Image from "next/image";
 import { BsPersonWorkspace } from "react-icons/bs";
 import { PiCertificateFill } from "react-icons/pi";
+import lottieFile from '@/public/lottie/study.json';
 import AnimationLottie from "../../helper/animation-lottie";
 import GlowCard from "../../helper/glow-card";
 
-// Enregistrer ScrollTrigger
-gsap.registerPlugin(ScrollTrigger);
-
 function Education() {
   const targetSection = useRef(null);
-  const [willChange, setWillChange] = useState(false);
-  const [animationData, setAnimationData] = useState(null);
-
-  const initRevealAnimation = () => {
-    // Vérifier si la ref existe
-    if (!targetSection.current) return null;
-
-    // Vérifier si les éléments .seq existent
-    const seqElements = targetSection.current.querySelectorAll(".seq");
-    if (!seqElements.length) return null;
-
-    // Créer l'animation
+  const [willChange, setwillChange] = useState(false);
+  const initRevealAnimation = (targetSection) => {
     const revealTl = gsap.timeline({ defaults: { ease: Linear.easeNone } });
-    revealTl.from(seqElements, {
-      opacity: 0,
-      duration: 1,
-      stagger: 0.5,
-    }, "<");
+    revealTl.from(
+      targetSection.current.querySelectorAll(".seq"),
+      { opacity: 0, duration: 1, stagger: 0.5 },
+      "<"
+    );
 
-    // Créer et retourner le ScrollTrigger
     return ScrollTrigger.create({
       trigger: targetSection.current.querySelector(".wrapper"),
       start: "100px bottom",
-      end: "center center",
+      end: `center center`,
       animation: revealTl,
       scrub: 0,
-      onToggle: (self) => setWillChange(self.isActive),
+      onToggle: (self) => setwillChange(self.isActive),
     });
   };
 
   useEffect(() => {
-    fetch('/lottie/study.json')
-      .then(response => response.json())
-      .then(data => setAnimationData(data))
-      .catch(error => console.error('Error loading animation:', error));
-  }, []);
+    const revealAnimationRef = initRevealAnimation(targetSection);
 
-  useEffect(() => {
-    let scrollTrigger;
-
-    // Attendre le prochain frame pour s'assurer que le DOM est prêt
-    const timer = setTimeout(() => {
-      scrollTrigger = initRevealAnimation();
-    }, 0);
-
-    return () => {
-      clearTimeout(timer);
-      if (scrollTrigger) {
-        scrollTrigger.kill();
-      }
-    };
-  }, []);
-
-  if (!animationData) {
-    return <div className="w-full h-full bg-gray-100 animate-pulse" />;
-  }
+    return revealAnimationRef.kill;
+  }, [targetSection]);
 
   return (
-    <div
-      id="education"
-      ref={targetSection}
-      className="relative z-50 border-t my-12 lg:my-24 border-[#25213b]"
-    >
+    <div id="education" ref={targetSection} className="relative z-50 border-t my-12 lg:my-24 border-[#25213b]">
       <Image
         src="/section.svg"
         alt="Hero"
@@ -86,15 +50,14 @@ function Education() {
         className="absolute top-0 -z-10"
       />
       <div className="wrapper">
-        {/* Rest of your JSX remains the same */}
         <div className="flex justify-center -translate-y-[1px]">
           <div className="w-3/4">
-            <div className="h-[1px] bg-gradient-to-r from-transparent via-violet-500 to-transparent w-full" />
+            <div className="h-[1px] bg-gradient-to-r from-transparent via-violet-500 to-transparent  w-full" />
           </div>
         </div>
 
         <div className="flex justify-center my-5 lg:py-8">
-          <div className="flex items-center">
+          <div className="flex  items-center">
             <span className="w-24 h-[2px] bg-[#1a1443] seq"></span>
             <span className="bg-[#1a1443] w-fit text-white p-2 px-5 text-xl rounded-md seq">
               Educations
@@ -107,41 +70,43 @@ function Education() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 seq">
             <div className="flex justify-center items-start seq">
               <div className="w-3/4 h-3/4 seq">
-                <AnimationLottie animationData={animationData} />
+                <AnimationLottie animationData={lottieFile} />
               </div>
             </div>
 
             <div>
               <div className="flex flex-col gap-6 seq">
-                {educations.map(education => (
-                  <GlowCard key={education.id} identifier={`education-${education.id}`}>
-                    <div className="p-3 relative text-white">
-                      <Image
-                        src="/blur-23.svg"
-                        alt="Hero"
-                        width={1080}
-                        height={200}
-                        className="absolute bottom-0 opacity-80"
-                      />
-                      <div className="flex justify-center">
-                        <p className="text-xs sm:text-sm text-[#16f2b3]">
-                          {education.duration}
-                        </p>
-                      </div>
-                      <div className="flex items-center gap-x-8 px-3 py-5">
-                        <div className="text-violet-500 transition-all duration-300 hover:scale-125">
-                          {education.id % 2 ? <BsPersonWorkspace size={36} /> : <PiCertificateFill size={36} />}
-                        </div>
-                        <div>
-                          <p className="text-base sm:text-xl mb-2 font-medium uppercase">
-                            {education.title}
+                {
+                  educations.map(education => (
+                    <GlowCard key={education.id} identifier={`education-${education.id}`}>
+                      <div className="p-3 relative text-white">
+                        <Image
+                          src="/blur-23.svg"
+                          alt="Hero"
+                          width={1080}
+                          height={200}
+                          className="absolute bottom-0 opacity-80"
+                        />
+                        <div className="flex justify-center">
+                          <p className="text-xs sm:text-sm text-[#16f2b3]">
+                            {education.duration}
                           </p>
-                          <p className="text-sm sm:text-base">{education.institution}</p>
+                        </div>
+                        <div className="flex items-center gap-x-8 px-3 py-5">
+                          <div className="text-violet-500  transition-all duration-300 hover:scale-125">
+                            {education.id % 2 ? <BsPersonWorkspace size={36} /> : <PiCertificateFill size={36} />}
+                          </div>
+                          <div>
+                            <p className="text-base sm:text-xl mb-2 font-medium uppercase">
+                              {education.title}
+                            </p>
+                            <p className="text-sm sm:text-base">{education.institution}</p>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </GlowCard>
-                ))}
+                    </GlowCard>
+                  ))
+                }
               </div>
             </div>
           </div>
@@ -149,6 +114,6 @@ function Education() {
       </div>
     </div>
   );
-}
+};
 
 export default Education;
