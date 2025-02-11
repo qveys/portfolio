@@ -27,6 +27,7 @@
     "typed.js": "^2.1.0"
   },
   "devDependencies": {
+    "@svgr/webpack": "^8.1.0",
     "@types/node": "22.13.1",
     "@types/react": "19.0.8",
     "autoprefixer": "latest",
