@@ -142,7 +142,7 @@ export const personalData = {
   fullname: '',
   firstname: '',
   lastname: '',
-  profile: '/profile.png',
+  profile: '/profile.jpg',
   resume: '/resume.pdf',
   designation: '',
   description: {
