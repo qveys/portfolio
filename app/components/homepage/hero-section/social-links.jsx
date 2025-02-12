@@ -2,7 +2,7 @@
 import { personalData } from "@/utils/data/personal-data";
 import Link from "next/link";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
-import { FaFacebook, FaTwitterSquare } from "react-icons/fa";
+import {FaFacebook, FaInstagram, FaTwitterSquare} from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
 
 export default function SocialLinks() {
@@ -30,6 +30,14 @@ export default function SocialLinks() {
         <FaFacebook size={30} />
       </Link>
       <Link
+        href={personalData.instagram}
+        target='_blank'
+        className="transition-all text-pink-500 hover:scale-125 duration-300"
+      >
+        <FaInstagram size={30} />
+      </Link>
+      {/**
+      <Link
         href={personalData.leetcode}
         target='_blank'
         className="transition-all text-pink-500 hover:scale-125 duration-300"
@@ -43,6 +51,7 @@ export default function SocialLinks() {
       >
         <FaTwitterSquare size={30} />
       </Link>
+      **/}
     </div>
   );
 } 
