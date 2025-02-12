@@ -5,7 +5,7 @@ export const personalData = {
   firstname: "Quentin",
   lastname: "VEYS",
   profile: '/profile.jpg',
-  resume: '/Resume.pdf',
+  resume: '/resume.pdf',
   designation: "Software Developer",
   description: {
     part1: "Discover my career path, skills and achievements",
