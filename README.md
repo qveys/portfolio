@@ -1,17 +1,16 @@
-# [Built Portfolio With GitHub ](https://github.com/qveys/portfolio)
+# [Built Portfolio With GitHub](https://github.com/qveys/portfolio)
 
 ---
 
-# Developer Portfolio
+## Developer Portfolio
 
-#### Are you struggling to create a professional portfolio website? Look no further! You can use the Developer Portfolio template and create your very own personalized portfolio today! My website is designed to be user-friendly and easily customizable, making it perfect for both developers and freelancers.
+### Are you struggling to create a professional portfolio website? Look no further! You can use the Developer Portfolio template and create your very own personalized portfolio today! My website is designed to be user-friendly and easily customizable, making it perfect for both developers and freelancers
 
 ---
 
 ## Table of Contents :scroll:
 
 - [Sections](#sections-bookmark)
-- [Demo](#demo-movie_camera)
 - [Installation](#installation-arrow_down)
 - [Getting Started](#getting-started-dart)
 - [Usage](#usage-joystick)
@@ -24,7 +23,7 @@
 
 ---
 
-# Sections :bookmark:
+## Sections :bookmark:
 
 - HERO SECTION
 - ~~ABOUT ME~~
@@ -37,27 +36,25 @@
 
 ---
 
-# Installation :arrow_down:
+## Installation :arrow_down:
 
 ### You will need to download Git and Node to run this project
 
 - [Git](https://git-scm.com/downloads)
 - [Node](https://nodejs.org/en/download/)
 
-#### Make sure you have the latest version of both Git and Node on your computer.
+#### Make sure you have the latest version of both Git and Node on your computer
 
 ```bash
 node --version
 git --version
 ```
 
-## <br />
+## Getting Started :dart:
 
-# Getting Started :dart:
+### Fork and Clone the Repository
 
-### Fork and Clone the repo
-
-To Fork the repo click on the fork button at the top right of the page. Once the repo is forked open your terminal and perform the following commands
+To fork the repo, click on the fork button at the top right of the page. Once the repo is forked, open your terminal and perform the following commands:
 
 ```bash
 git clone https://github.com/<YOUR GITHUB USERNAME>/portfolio.git
@@ -88,6 +85,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ### Running with Docker Compose
 
 1. **Build Docker Image and Run Container**:
+
     ```bash
     docker-compose up --build
     ```
@@ -116,11 +114,11 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ---
 
-# Usage :joystick:
+## Usage :joystick:
 
-Please create a new `.env` file from `.env.example` file.
+Please create a new `.env` file from the `.env.example` file.
 
-Eg:
+**Example:**
 
 ```env
 NEXT_PUBLIC_GTM =
@@ -131,9 +129,9 @@ GMAIL_PASSKEY =
 EMAIL_ADDRESS =
 ```
 
-### Then, Customize data in the `utils/data` [folder](https://github.com/said7388/developer-portfolio/tree/main/utils/data).
+### Then, customize data in the `utils/data` [folder](https://github.com/said7388/developer-portfolio/tree/main/utils/data)
 
-Eg:
+**Example:**
 
 ```javascript
 export const personalData = {
@@ -168,11 +166,11 @@ export const personalData = {
 
 ---
 
-# Deployment :rocket:
+## Deployment :rocket:
 
 Deploying the app to platforms like Vercel or Netlify is quick and easy.
 
-## Deploying to Vercel:
+### Deploying to Vercel
 
 1. **Sign up or log in** to [Vercel](https://vercel.com/).
 2. Once logged in, click on **"New Project"**.
@@ -186,7 +184,7 @@ Deploying the app to platforms like Vercel or Netlify is quick and easy.
 
 Whenever you push changes to your GitHub repo, Vercel will automatically redeploy the app, keeping your portfolio up-to-date.
 
-## Deploying to Netlify:
+### Deploying to Netlify
 
 1. **Sign up or log in** to [Netlify](https://www.netlify.com/).
 2. In the **Netlify Dashboard**, click **"New site from Git"**.
@@ -196,9 +194,9 @@ Whenever you push changes to your GitHub repo, Vercel will automatically redeplo
 
 ---
 
-# Tutorials :wrench:
+## Tutorials :wrench:
 
-## Gmail App Password Setup
+### Gmail App Password Setup
 
 1. **Log in to your Google Account** at [https://myaccount.google.com/](https://myaccount.google.com/).
 2. Navigate to **Security** from the left sidebar.
@@ -208,7 +206,7 @@ Whenever you push changes to your GitHub repo, Vercel will automatically redeplo
 6. In the **Select app** dropdown, choose "Mail", and for **Select device**, choose "Other (Custom name)" and name it appropriately (e.g., "Portfolio").
 7. Click **Generate**. A 16-character app password will be displayed. Save this password for later use in your environment variables (e.g., `GMAIL_PASSKEY`).
 
-## Create a Telegram Bot
+### Create a Telegram Bot
 
 1. **Open Telegram** and search for the user **@BotFather**.
 2. Start a chat with BotFather and use the `/newbot` command to create a new bot.
@@ -221,7 +219,7 @@ Whenever you push changes to your GitHub repo, Vercel will automatically redeplo
      `https://api.telegram.org/bot<BOT_TOKEN>/getUpdates`
    - Look for the `chat` object in the response, which contains your **chat ID** (you can use this value for `TELEGRAM_CHAT_ID`).
 
-## Fetching Blog from dev.to
+### Fetching Blog from dev.to
 
 To display your blog posts from dev.to on the portfolio:
 
@@ -231,7 +229,7 @@ To display your blog posts from dev.to on the portfolio:
 
 ---
 
-# Packages Used :package:
+## Packages Used :package:
 
 |   Used Package List    |
 | :--------------------: |
@@ -253,18 +251,16 @@ To display your blog posts from dev.to on the portfolio:
 
 ---
 
-# FAQ:
+## FAQ
 
 1. For those facing the issue of "`next` is not recognized as an internal or external command, operable program or batch file."
 
 Run the following command:
 
 ```bash
-
 npm install -g next
-
 ```
 
-This installs Next.js globally
+This installs Next.js globally.
 
-then do the usual `npm run dev`
+Then run the usual `npm run dev`.
