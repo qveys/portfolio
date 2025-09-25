@@ -4,7 +4,7 @@ import React, { useRef, useEffect } from 'react';
 import Typed from "typed.js";
 import { typedStrings } from "@/utils/data/typedStrings";
 
-const TypedSpan = React.memo(() => {
+const TypedSpan = React.memo(function TypedSpan() {
     const typedSpanElement = useRef(null);
     
     const initTypeAnimation = (typedSpanElement) => {
