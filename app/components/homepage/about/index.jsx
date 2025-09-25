@@ -19,7 +19,7 @@ function AboutSection() {
             Who I am?
           </p>
           <p className="text-gray-200 text-sm lg:text-lg">
-            {personalData.description}
+            {personalData.description.part1} {personalData.description.part2}
           </p>
         </div>
         <div className="flex justify-center order-1 lg:order-2">
