@@ -16,7 +16,7 @@ const Header = () => {
             alt="Logo - Quentin Veys"
             width={32}
             height={32}
-            style={{ width: 'auto', height: 'auto' }}
+            style={{ width: '32px', height: '32px' }}
           />
         </a>
         <nav className={`outer-menu ${menuVisible ? "menu-visible" : ""}`}>
