@@ -14,7 +14,7 @@ import GlowCard from "../../helper/glow-card";
 
 function Experience() {
   const targetSection = useRef(null);
-  const [willChange, setwillChange] = useState(false);
+  const [, setwillChange] = useState(false);
 
   const initRevealAnimation = (targetSection) => {
     const revealTl = gsap.timeline({ defaults: { ease: Linear.easeNone } });
@@ -103,6 +103,6 @@ function Experience() {
       </div>
     </div>
   );
-};
+}
 
 export default Experience;
