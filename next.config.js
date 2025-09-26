@@ -2,6 +2,8 @@ const path = require('path')
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Enable standalone output for Docker optimization
+  output: 'standalone',
   // Disable source maps completely to avoid 404 errors
   productionBrowserSourceMaps: false,
   // Disable source maps in development as well

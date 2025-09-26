@@ -1,32 +1,71 @@
 services:
-  dev:
+  portfolio-prod:
     build:
       context: .
-      dockerfile: Dockerfile.dev
-    container_name: demo-nextjs-dev
+      dockerfile: Dockerfile
+      platforms:
+        - linux/amd64
+    container_name: portfolio-prod-container
+    ports:
+      - "3000:3000"
     environment:
+      - NODE_ENV=production
+      - NEXT_TELEMETRY_DISABLED=1
+    restart: unless-stopped
+    env_file:
+      - .env
+    networks:
+      - portfolio-network
+
+  portfolio-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      platforms:
+        - linux/amd64
+    container_name: portfolio-dev-container
+    ports:
+      - "3001:3000"
+    environment:
+      - NODE_ENV=development
       - WATCHPACK_POLLING=true
     volumes:
       - .:/app
       - /app/node_modules
       - /app/.next
-    ports:
-      - "3000:3000"
+    restart: unless-stopped
     env_file:
       - .env
+    networks:
+      - portfolio-network
+    profiles:
+      - dev
 
-  prod:
+  portfolio-registry:
     build:
       context: .
-      dockerfile: Dockerfile.prod
+      dockerfile: Dockerfile
       platforms:
         - linux/amd64
-        - linux/arm64
-    container_name: demo-nextjs
+    image: registry.quentinveys.be/portfolio:latest
+    container_name: portfolio-registry-container
     ports:
-      - "3005:3000"
+      - "3002:3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_TELEMETRY_DISABLED=1
+    restart: unless-stopped
     env_file:
       - .env
+    networks:
+      - portfolio-network
+    profiles:
+      - registry
+
+networks:
+  portfolio-network:
+    driver: bridge
 
 volumes:
   node_modules:
+  next_cache:
