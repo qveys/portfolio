@@ -19,6 +19,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.prod
+      platforms:
+        - linux/amd64
+        - linux/arm64
     container_name: demo-nextjs
     ports:
       - "3005:3000"

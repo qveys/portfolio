@@ -105,13 +105,19 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
     docker build -t nextjs-app -f Dockerfile.dev .
     ```
 
-2. **Running the Docker Container**:
+2. **Build Multi-Platform Docker Image (amd64/arm64)**:
+
+    ```bash
+    docker buildx build --platform linux/amd64,linux/arm64 -t nextjs-portfolio-app:prod --push .
+    ```
+
+3. **Running the Docker Container**:
 
     ```bash
     docker run -p 3000:3000 nextjs-app
     ```
 
-3. **Access the Application**:
+4. **Access the Application**:
    Visit [http://localhost:3000](http://localhost:3000) in your web browser to view the running application.
 
 ---
