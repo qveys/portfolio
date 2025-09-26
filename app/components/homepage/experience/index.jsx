@@ -1,5 +1,10 @@
 // @flow strict
 
+"use client";
+
+import { useRef, useEffect, useState } from "react";
+import { gsap, Linear } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { experiences } from "@/utils/data/experience";
 import Image from "next/image";
 import { BsPersonWorkspace } from "react-icons/bs";
@@ -8,30 +13,51 @@ import AnimationLottie from "../../helper/animation-lottie";
 import GlowCard from "../../helper/glow-card";
 
 function Experience() {
-  return (
-    <div id="experience" className="relative z-50 border-t my-12 lg:my-24 border-[#25213b]">
-      <Image
-        src="/section.svg"
-        alt="Hero"
-        width={1572}
-        height={795}
-        className="absolute top-0 -z-10"
-      />
+  const targetSection = useRef(null);
+  const [willChange, setwillChange] = useState(false);
 
-      <div className="flex justify-center my-5 lg:py-8">
-        <div className="flex  items-center">
-          <span className="w-24 h-[2px] bg-[#1a1443]"></span>
-          <span className="bg-[#1a1443] w-fit text-white p-2 px-5 text-xl rounded-md">
+  const initRevealAnimation = (targetSection) => {
+    const revealTl = gsap.timeline({ defaults: { ease: Linear.easeNone } });
+    revealTl.from(
+      targetSection.current.querySelectorAll(".seq"),
+      { opacity: 0, duration: 1, stagger: 0.5 },
+      "<"
+    );
+
+    return ScrollTrigger.create({
+      trigger: targetSection.current.querySelector(".wrapper"),
+      start: "100px bottom",
+      end: `center center`,
+      animation: revealTl,
+      scrub: 0,
+      onToggle: (self) => setwillChange(self.isActive),
+    });
+  };
+
+  useEffect(() => {
+    const revealAnimationRef = initRevealAnimation(targetSection);
+
+    return revealAnimationRef.kill;
+  }, [targetSection]);
+
+  return (
+    <div id="experience" ref={targetSection} className="relative z-50 border-t my-12 lg:my-24 border-[#25213b]">
+      <Image src="/section.svg" alt="Hero" width={1572} height={795} className="absolute top-0 -z-10" />
+
+      <div className="flex justify-center my-5 lg:py-8 wrapper">
+        <div className="flex items-center">
+          <span className="w-24 h-[2px] bg-[#1a1443] seq"></span>
+          <span className="bg-[#1a1443] w-fit text-white p-2 px-5 text-xl rounded-md seq">
             Experiences
           </span>
-          <span className="w-24 h-[2px] bg-[#1a1443]"></span>
+          <span className="w-24 h-[2px] bg-[#1a1443] seq"></span>
         </div>
       </div>
 
       <div className="py-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
-          <div className="flex justify-center items-start">
-            <div className="w-full h-full">
+          <div className="flex justify-center items-start seq">
+            <div className="w-full h-full seq">
               <AnimationLottie animationPath={experience} />
             </div>
           </div>
