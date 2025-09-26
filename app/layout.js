@@ -6,7 +6,8 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { Inter } from "next/font/google";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+// Import custom CSS without source map references
+import "./css/toastify.css";
 import Footer from "./components/footer";
 import ScrollToTop from "./components/helper/scroll-to-top";
 import Header from "./components/header";
