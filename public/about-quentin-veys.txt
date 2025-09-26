@@ -1,0 +1,20 @@
+# Quentin Veys - Software Developer Portfolio
+
+## About
+Quentin Veys is a software developer based in Brussels, Belgium. Specialized in full-stack web development with React, Node.js and JavaScript.
+
+## Skills
+- Full-stack web development
+- React.js and Node.js
+- JavaScript, TypeScript
+- SQL and NoSQL databases
+- Responsive web application development
+
+## Contact
+- Website: https://quentinveys.be
+- Email: contact@quentinveys.be
+- LinkedIn: https://www.linkedin.com/in/qveys
+- GitHub: https://github.com/qveys
+
+## Location
+Brussels, Belgium

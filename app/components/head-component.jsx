@@ -5,21 +5,30 @@ export default function HeadComponent() {
   const fullDescription = Object.values(personalData.description).join(" ");
   const keywordsString = personalData.keywords.join(", ");
   
+  // Variables SEO utilisant un maximum de personalData
+  const seoTitle = personalData.title;
+  const seoDescription = personalData.seoDescription;
+  const seoKeywords = keywordsString;
+  const authorName = personalData.fullname;
+  const siteUrl = personalData.siteURL;
+  const profileImage = `${siteUrl}${personalData.profileImage}`;
+  const previewImage = `${siteUrl}${personalData.previewImage}`;
+  
   return (
     <Head>
       {/* Métadonnées de base */}
-      <title>{personalData.title}</title>
+      <title>{seoTitle}</title>
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-      <meta name="description" content={fullDescription} />
-      <meta name="keywords" content={keywordsString} />
+      <meta name="description" content={seoDescription} />
+      <meta name="keywords" content={seoKeywords} />
       <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
-      <meta name="author" content={personalData.fullname} />
+      <meta name="author" content={authorName} />
       <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
       <meta name="language" content="en" />
-      <meta name="geo.region" content="BE-BRU" />
-      <meta name="geo.placename" content="Brussels, Belgium" />
-      <meta name="geo.position" content="50.8348;4.3962" />
-      <meta name="ICBM" content="50.8348, 4.3962" />
+      <meta name="geo.region" content={personalData.geoRegion} />
+      <meta name="geo.placename" content={personalData.geoPlaceName} />
+      <meta name="geo.position" content={personalData.geoPosition} />
+      <meta name="ICBM" content={personalData.geoICBM} />
       
       {/* Métadonnées pour les moteurs de recherche */}
       <meta name="googlebot" content="index, follow" />
@@ -31,12 +40,12 @@ export default function HeadComponent() {
       
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />
-      <meta property="og:site_name" content={personalData.title} />
-      <meta property="og:title" content={personalData.title} />
-      <meta property="og:description" content={fullDescription} />
-      <meta property="og:url" content={personalData.siteURL} />
-      <meta property="og:image" content={`${personalData.siteURL}/preview.jpg`} />
-      <meta property="og:image:alt" content={`${personalData.fullname} - ${personalData.designation}`} />
+      <meta property="og:site_name" content={seoTitle} />
+      <meta property="og:title" content={seoTitle} />
+      <meta property="og:description" content={seoDescription} />
+      <meta property="og:url" content={siteUrl} />
+      <meta property="og:image" content={previewImage} />
+      <meta property="og:image:alt" content={`${authorName} - ${personalData.designation}`} />
       <meta property="og:image:width" content="1440" />
       <meta property="og:image:height" content="800" />
       <meta property="og:image:type" content="image/jpeg" />
@@ -44,12 +53,12 @@ export default function HeadComponent() {
       
       {/* Twitter Card */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="@qveys" />
-      <meta name="twitter:creator" content="@qveys" />
-      <meta name="twitter:title" content={personalData.title} />
-      <meta name="twitter:description" content={fullDescription} />
-      <meta name="twitter:image" content={`${personalData.siteURL}/preview.jpg`} />
-      <meta name="twitter:image:alt" content={`${personalData.fullname} - ${personalData.designation}`} />
+      <meta name="twitter:site" content={personalData.twitterHandle} />
+      <meta name="twitter:creator" content={personalData.twitterHandle} />
+      <meta name="twitter:title" content={seoTitle} />
+      <meta name="twitter:description" content={seoDescription} />
+      <meta name="twitter:image" content={previewImage} />
+      <meta name="twitter:image:alt" content={`${authorName} - ${personalData.designation}`} />
       
       {/* LinkedIn */}
       <meta property="linkedin:owner" content={personalData.linkedIn} />
@@ -60,9 +69,20 @@ export default function HeadComponent() {
       <meta name="mobile-web-app-capable" content="yes" />
       
       {/* Liens canoniques et favicon */}
-      <link rel="canonical" href={personalData.siteURL} />
+      <link rel="canonical" href={siteUrl} />
       <link rel="icon" type="image/x-icon" href="/favicon.ico" />
       <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico" />
+      <link rel="manifest" href="/manifest.json" />
+      
+      {/* Métadonnées supplémentaires pour Quentin Veys */}
+      <meta name="subject" content={personalData.seoSubject} />
+      <meta name="copyright" content={personalData.seoCopyright} />
+      <meta name="classification" content={personalData.seoClassification} />
+      <meta name="target" content="all" />
+      <meta name="audience" content="all" />
+      <meta name="distribution" content="global" />
+      <meta name="rating" content="general" />
+      <meta name="revisit-after" content={personalData.seoRevisitAfter} />
       
       {/* JSON-LD Structured Data */}
       <script
@@ -71,31 +91,49 @@ export default function HeadComponent() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Person",
-            "name": personalData.fullname,
+            "name": authorName,
             "givenName": personalData.firstname,
             "familyName": personalData.lastname,
+            "alternateName": ["Quentin Veys", "quentinveys", "Q. Veys"],
             "jobTitle": personalData.designation,
-            "description": fullDescription,
-            "url": personalData.siteURL,
-            "image": `${personalData.siteURL}/profile.jpg`,
+            "description": seoDescription,
+            "url": siteUrl,
+            "image": profileImage,
             "email": personalData.email,
+            "telephone": personalData.phone,
             "address": {
               "@type": "PostalAddress",
               "addressLocality": "Brussels",
               "addressRegion": "Brussels",
               "addressCountry": "BE"
             },
+            "nationality": personalData.nationality,
             "sameAs": [
               personalData.github,
               personalData.linkedIn,
               personalData.facebook,
               personalData.instagram
             ].filter(Boolean),
-            "knowsAbout": personalData.keywords.slice(0, 10),
-            "alumniOf": "Software Development",
+            "knowsAbout": personalData.keywords.slice(0, 15),
+            "alumniOf": {
+              "@type": "EducationalOrganization",
+              "name": "Software Development"
+            },
             "worksFor": {
               "@type": "Organization",
               "name": "Freelance Developer"
+            },
+            "hasOccupation": {
+              "@type": "Occupation",
+              "name": "Software Developer",
+              "occupationLocation": {
+                "@type": "City",
+                "name": "Brussels, Belgium"
+              }
+            },
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": siteUrl
             }
           })
         }}

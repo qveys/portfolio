@@ -1,15 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
-  <!-- Page d'accueil -->
+  <!-- Page d'accueil - Quentin Veys Portfolio -->
   <url>
     <loc>https://quentinveys.be/</loc>
     <lastmod>2024-12-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://quentinveys.be/profile.jpg</image:loc>
+      <image:title>Quentin Veys - Software Developer</image:title>
+      <image:caption>Portrait de Quentin Veys, développeur de logiciels basé à Bruxelles</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://quentinveys.be/preview.jpg</image:loc>
+      <image:title>Quentin Veys Portfolio Preview</image:title>
+      <image:caption>Aperçu du portfolio de Quentin Veys</image:caption>
+    </image:image>
   </url>
 
   <!-- Page blog -->
@@ -20,7 +31,7 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Ressources importantes -->
+  <!-- CV de Quentin Veys -->
   <url>
     <loc>https://quentinveys.be/resume.pdf</loc>
     <lastmod>2024-12-19</lastmod>

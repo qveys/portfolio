@@ -1,0 +1,20 @@
+{
+  "name": "Quentin Veys - Software Developer Portfolio",
+  "short_name": "Quentin Veys",
+  "description": "Professional portfolio of Quentin Veys, software developer based in Brussels, Belgium. Discover my projects, skills and experience in web development.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0d1224",
+  "theme_color": "#1a1443",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": ["portfolio", "developer", "software", "web development"],
+  "lang": "en",
+  "dir": "ltr"
+}

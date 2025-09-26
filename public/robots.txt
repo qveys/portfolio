@@ -1,21 +1,21 @@
-# Robots.txt pour le portfolio
-# Optimisé pour le référencement Google
+# Robots.txt for Quentin Veys portfolio
+# Optimized for Google SEO - quentinveys.be
 
 User-agent: *
 Allow: /
 
-# Pages principales à indexer
+# Main pages to index for Quentin Veys
 Allow: /
 Allow: /blog
 Allow: /api/data
 
-# Ressources statiques importantes
+# Important static resources
 Allow: /favicon.ico
 Allow: /resume.pdf
 Allow: /profile.jpg
 Allow: /preview.jpg
 
-# Fichiers d'assets (images, SVG, etc.)
+# Asset files (images, SVG, etc.)
 Allow: /png/
 Allow: /lottie/
 Allow: /*.svg
@@ -24,7 +24,7 @@ Allow: /*.jpg
 Allow: /*.jpeg
 Allow: /*.webp
 
-# Bloquer les fichiers de développement et configuration
+# Block development and configuration files
 Disallow: /_next/
 Disallow: /api/contact
 Disallow: /api/google
@@ -36,31 +36,33 @@ Disallow: /tailwind.config.js
 Disallow: /postcss.config.js
 Disallow: /jsconfig.json
 
-# Bloquer les fichiers sources et de développement
+# Block source and development files
 Disallow: /app/
 Disallow: /components/
 Disallow: /utils/
 Disallow: /css/
 Disallow: /node_modules/
 
-# Sitemap
+# Sitemap for Quentin Veys
 Sitemap: https://quentinveys.be/sitemap.xml
 
-# Directives spécifiques pour Googlebot
+# Specific directives for Googlebot - Quentin Veys Portfolio
 User-agent: Googlebot
 Allow: /
 Allow: /blog
 Allow: /api/data
 Allow: /resume.pdf
 Allow: /profile.jpg
+Allow: /preview.jpg
 
-# Directives pour Bingbot
+# Directives for Bingbot
 User-agent: Bingbot
 Allow: /
 Allow: /blog
 Allow: /api/data
+Allow: /resume.pdf
 
-# Bloquer les bots malveillants connus
+# Block known malicious bots
 User-agent: AhrefsBot
 Disallow: /
 
@@ -70,5 +72,5 @@ Disallow: /
 User-agent: DotBot
 Disallow: /
 
-# Crawl-delay pour éviter la surcharge
+# Crawl-delay to avoid overload
 Crawl-delay: 1

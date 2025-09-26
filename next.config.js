@@ -6,6 +6,12 @@ const nextConfig = {
   output: 'standalone',
   // Disable source maps completely to avoid 404 errors
   productionBrowserSourceMaps: false,
+  
+  // SEO optimizations
+  compress: true,
+  poweredByHeader: false,
+  generateEtags: true,
+  
   // Disable source maps in development as well
   webpackDevMiddleware: config => {
     config.watchOptions = {
