@@ -1,0 +1,74 @@
+# Robots.txt pour le portfolio
+# Optimisé pour le référencement Google
+
+User-agent: *
+Allow: /
+
+# Pages principales à indexer
+Allow: /
+Allow: /blog
+Allow: /api/data
+
+# Ressources statiques importantes
+Allow: /favicon.ico
+Allow: /resume.pdf
+Allow: /profile.jpg
+Allow: /preview.jpg
+
+# Fichiers d'assets (images, SVG, etc.)
+Allow: /png/
+Allow: /lottie/
+Allow: /*.svg
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.webp
+
+# Bloquer les fichiers de développement et configuration
+Disallow: /_next/
+Disallow: /api/contact
+Disallow: /api/google
+Disallow: /Dockerfile*
+Disallow: /docker-compose.yml
+Disallow: /package*.json
+Disallow: /next.config.js
+Disallow: /tailwind.config.js
+Disallow: /postcss.config.js
+Disallow: /jsconfig.json
+
+# Bloquer les fichiers sources et de développement
+Disallow: /app/
+Disallow: /components/
+Disallow: /utils/
+Disallow: /css/
+Disallow: /node_modules/
+
+# Sitemap
+Sitemap: https://quentinveys.be/sitemap.xml
+
+# Directives spécifiques pour Googlebot
+User-agent: Googlebot
+Allow: /
+Allow: /blog
+Allow: /api/data
+Allow: /resume.pdf
+Allow: /profile.jpg
+
+# Directives pour Bingbot
+User-agent: Bingbot
+Allow: /
+Allow: /blog
+Allow: /api/data
+
+# Bloquer les bots malveillants connus
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Crawl-delay pour éviter la surcharge
+Crawl-delay: 1
