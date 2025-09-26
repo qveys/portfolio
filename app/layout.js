@@ -12,6 +12,7 @@ import Footer from "./components/footer";
 import ScrollToTop from "./components/helper/scroll-to-top";
 import Header from "./components/header";
 import "./css/card.scss";
+import "./css/tailwind.css";
 import "./css/globals.scss";
 import HeadComponent from "@/app/components/head-component";
 
