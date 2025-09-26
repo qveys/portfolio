@@ -29,4 +29,6 @@ const TypedSpan = React.memo(() => {
     );
 });
 
+TypedSpan.displayName = 'TypedSpan';
+
 export default TypedSpan;
